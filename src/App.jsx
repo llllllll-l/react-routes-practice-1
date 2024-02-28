@@ -1,9 +1,10 @@
-import { useState } from 'react';
-import { Route, Routes, Link } from 'react-router-dom';
-import { appsData, productsData } from './data.js';
-import Home from './pages/Home';
-import ProductsPage from './pages/Products';
-import './App.css';
+import { useState } from "react";
+import { Route, Routes, Link } from "react-router-dom";
+import { appsData, productsData } from "./data.js";
+import Home from "./pages/Home/index.jsx";
+import ProductsPage from "./pages/Products/index.jsx";
+import Apps from "./pages/Apps/index.jsx";
+import "./App.css";
 
 export default function App() {
   const [products, setProducts] = useState(productsData);
@@ -23,6 +24,10 @@ export default function App() {
             <li>
               <Link to="/products">Products</Link>
             </li>
+            {/* Apps link added */}
+            <li>
+              <Link to="/apps">Apps</Link>
+            </li>
           </ul>
         </nav>
       </header>
@@ -32,6 +37,7 @@ export default function App() {
           element={<ProductsPage products={products} />}
         />
         <Route path="/" element={<Home />} />
+        <Route path="/apps" element={<Apps apps={apps} />} />
       </Routes>
     </div>
   );
